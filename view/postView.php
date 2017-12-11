@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- For view one post --> 
 <html>
     <head>
         <meta charset="utf-8" />

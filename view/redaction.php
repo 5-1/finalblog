@@ -1,5 +1,5 @@
 <?php $title = 'Redaction article'; ?>
-<?php $background_image = 'img/buisiness.jpg'; ?>
+<?php $background_image = '/img/article.jpg'; ?>
 <?php $h1title = 'BLOG'; ?>
 <?php $h2title = 'Ajouter ou supprimer un article'; ?>
 
@@ -9,6 +9,10 @@
 <?php ob_start(); ?>
 
 <?php
+/**
+ * For to write one post.
+ */
+
 $bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
 $mode_edition = 0;
 
@@ -63,7 +67,7 @@ if(isset($_POST['add']))
    <br/>
    <?php if(isset($message)) { echo $message; } ?> <br/>
 
-   <a class="btn btn-primary float-left" href="post.php">retour au blog</a>
+   <a class="btn btn-primary float-left" href="/test2/index.php">retour au blog</a>
 
 
 

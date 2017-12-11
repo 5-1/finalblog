@@ -1,4 +1,4 @@
-<?php $title = 'Redaction article'; ?>
+<?php $title = 'à propos'; ?>
 <?php $background_image = '/test2/img/about-bg.jpg'; ?>
 <?php $h1title = '<h1>À propos</h1>'; ?>
 <?php $h2title = 'Tout ce que vous devez savoir.'; ?>
