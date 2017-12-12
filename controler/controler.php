@@ -39,10 +39,12 @@ public function editPost($postId)
 		
 	$postManager = new PostManager();
 	$post = $postManager->getPost($postId);
+	$modeEdition = true;
 	require('view/editPostView.php');	
 }
 public function newPost()
  {
+ 	$modeEdition = false;
     require('view/editPostView.php');
  }
 
