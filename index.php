@@ -83,5 +83,5 @@ elseif(isset($_POST['add']))
 }
 else 
 {
-    listPosts();
+    $controler->listPosts();
 }
