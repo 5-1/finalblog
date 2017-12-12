@@ -19,7 +19,7 @@ while ($post = $posts->fetch())
         <h3>
             <em><a href="index.php?action=post&id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a></em>
            
-            <em>le <?= $post['creation_date'] ?></em> <br/>
+            <em>le <?= $post['creation_date_fr'] ?></em> <br/>
 
         </h3>
         
@@ -37,5 +37,5 @@ while ($post = $posts->fetch())
 <?php
 }
 $content = ob_get_clean();
-reqyure('template.php');
+require('template.php');
 ?>
