@@ -40,12 +40,12 @@ public function editPost($postId)
 	$postManager = new PostManager();
 	$post = $postManager->getPost($postId);
 	$modeEdition = true;
-	require('view/editPostView.php');	
+	require('view/editpostView.php');	
 }
 public function newPost()
  {
  	$modeEdition = false;
-    require('view/editPostView.php');
+    require('view/editpostView.php');
  }
 
 public function deletePost($postId)
@@ -54,4 +54,19 @@ public function deletePost($postId)
 	$postManager->deletePost($postId);
 	$this->listPosts();
  }
+
+ public function updatePost($postId, $title, $content)
+ {
+	$postManager = new PostManager();
+	$postManager->updatePost($postId, $title, $content);
+	$this->post(postId);
+
+ }
+ public function savePost($postId, $title, $content)
+ {
+	$postManager = new PostManager();
+	$postId = $postManager->savePost($title ,$content);
+	$this->post(postId);
+ }
+
 }
