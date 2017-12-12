@@ -3,10 +3,6 @@
 <?php $h1title = 'BLOG'; ?>
 <?php $h2title = 'Liste des articles'; ?>
 
-
-
-
-
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>
 <p>Derniers billets du blog :</p>
@@ -15,29 +11,24 @@
 
 
 <?php
-
-
-$bdd = new PDO("mysql:host=127.0.0.1;dbname=articles;charset=utf8", "root", "");
-$articles = $bdd->query('SELECT * FROM articles ORDER BY creation_date DESC');
-
-while ($a =$articles->fetch())
+while ($post = $posts->fetch())
 {
 ?>
-         <a href="view/post.php?id=<?= $a['id'] ?>"> <br/>
 
     <div class="news">
         <h3>
-            <em><a href="view/post.php?id=<?= $a['id'] ?>"><?= htmlspecialchars($a['title']) ?></a></em>
+            <em><a href="index.php?action=post&id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a></em>
            
-            <em>le <?= $a['creation_date'] ?></em> <br/>
+            <em>le <?= $post['creation_date'] ?></em> <br/>
 
         </h3>
         
         <p>
-            <?= nl2br(htmlspecialchars($a['content'])) ?> </br>
+            <?= nl2br(htmlspecialchars($post['content'])) ?> </br>
             <br />
-                        <a class="btn btn-primary " href="view/redaction.php?edit=<?= $a['id'] ?>">Modifier</a> 
-            <a class="btn btn-primary " href="view/supprimer.php?id=<?= $a['id'] ?>">Supprimer</a> <br/></a> 
+
+            <a class="btn btn-primary " href="index.php?action=edit&id=<?= $post['id'] ?>">Modifier</a> 
+            <a class="btn btn-primary " href="index.php?action=supprimer&id=<?= $post['id'] ?>">Supprimer</a>  
         </p>
     </div>
 
@@ -45,9 +36,6 @@ while ($a =$articles->fetch())
 
 <?php
 }
-$articles->closeCursor();
+$content = ob_get_clean();
+reqyure('template.php');
 ?>
-<?php $content = ob_get_clean(); ?>
-
-<?php require('template.php'); ?>
-

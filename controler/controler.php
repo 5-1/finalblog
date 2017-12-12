@@ -1,38 +1,55 @@
 <?php
 
-
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 
-function listPosts()
+class controler
+{
+public function listPosts()
 {
     $postManager = new PostManager(); // Création  objet
     $posts = $postManager->getPosts(); // Appel fonction de l'objet
-
     require('view/indexView.php');
 }
 
-function post()
+public function post($postId)
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
-
-    $post = $postManager->getPost($_GET['id']);
+    $post = $postManager->getPost($postId);
     $comments = $commentManager->getComments($_GET['id']);
-
     require('view/postView.php');
 }
 
-function addComment($postId, $author, $comment)
+public function addComment($postId, $author, $comment)
 {
     $commentManager = new CommentManager();
-
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
-
-    if ($affectedLines === false) {
+    if ($affectedLines === false) 
+    {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     }
-    else {
+    else 
+    {
         header('Location: index.php?action=post&id=' . $postId);
     }
+}
+public function editPost($postId) 
+{
+		
+	$postManager = new PostManager();
+	$post = $postManager->getPost($postId);
+	require('view/editPostView.php');	
+}
+public function newPost()
+ {
+    require('view/editPostView.php');
+ }
+
+public function deletePost($postId)
+ {
+	$postManager = new PostManager();
+	$postManager->deletePost($postId);
+	$this->listPosts();
+ }
 }
