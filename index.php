@@ -70,7 +70,7 @@ elseif(isset($_POST['add']))
 {
     if(!empty($_POST[('article_titre')]) && !empty($_POST['article_contenu']))
 	{
-        if(isset($_POST['id']) AND !empty($_POST['id']))
+        if(isset($_POST['id']) && !empty($_POST['id']))
         {
             $controler->updatePost($_POST['id'], $_POST['article_titre'], $_POST['article_contenu']);
         }
