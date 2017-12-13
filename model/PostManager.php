@@ -7,7 +7,6 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM articles ORDER BY creation_date DESC LIMIT 0, 5');
-
         return $req;
     }
 
@@ -17,27 +16,28 @@ class PostManager extends Manager
         $req = $db->prepare('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM articles WHERE id = ?');
         $req->execute(array($postId));
         $post = $req->fetch();
-
         return $post;
     }
 
-
-        public function savePost($postId, $titre, $contenu)
+    public function savePost($titre, $contenu)
     {
         $db = $this->dbConnect();
-        $ins = $bd->prepare("INSERT INTO articles (title, content, creation_date, date_time_edition) VALUES (?, ?, NOW(), NOW())");
-        $ins->execute(array($title, $content));
-
-        return $dbh->lastInsertId();
+        $ins = $db->prepare("INSERT INTO articles (title, content, creation_date, date_time_edition) VALUES (?, ?, NOW(), NOW())");
+        $ins->execute(array($titre, $contenu));
+        return $db->lastInsertId();
     }
 
-            public function updatePost($postId, $titre, $contenu)
+    public function updatePost($postId, $titre, $contenu)
     {
-
-        $update = $bd->prepare('UPDATE articles SET title = ?, content = ?, date_time_edition = NOW() WHERE id = ?');
-         $update->execute(array($title, $content, $PostId));
+		$db = $this->dbConnect();
+        $update = $db->prepare('UPDATE articles SET title = ?, content = ?, date_time_edition = NOW() WHERE id = ?');
+        $update->execute(array($titre, $contenu, $postId));
     }
-
-
-
+	
+	public function deletePost($postId) 
+	{
+		$db = $this->dbConnect();
+        $update = $db->prepare('DELETE FROM articles WHERE id = ?');
+        $update->execute(array($postId));
+	}
 }

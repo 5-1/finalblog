@@ -1,3 +1,4 @@
+
 <?php
 require('controler/controler.php');
 $controler = new Controler();
@@ -41,7 +42,7 @@ if (isset($_GET['action']))
     {
         if (isset($_GET['id']) && $_GET['id'] > 0)
         {
-            $controler->delectePost($_GET['id']);
+            $controler->deletePost($_GET['id']);
         }
         else
         {
@@ -85,3 +86,5 @@ else
 {
     $controler->listPosts();
 }
+
+

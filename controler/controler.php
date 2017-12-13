@@ -24,7 +24,7 @@ public function post($postId)
 public function addComment($postId, $author, $comment)
 {
     $commentManager = new CommentManager();
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    $affectedLines = $CommentManager->postComment($postId, $author, $comment);
     if ($affectedLines === false) 
     {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -42,10 +42,18 @@ public function editPost($postId)
 	$modeEdition = true;
 	require('view/editpostView.php');	
 }
-public function newPost()
+public function newPost($Id, $title, $content)
  {
- 	$modeEdition = false;
-    require('view/editpostView.php');
+ 	$modeEdition = true;
+ $affectedLines = $PostManager->newPost($Id, $title, $comment);
+    if ($affectedLines === false) 
+    {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
+    }
+    else 
+    {
+        header('Location: index.php?action=post&id=' . $postId);
+    }
  }
 
 public function deletePost($postId)
@@ -59,14 +67,14 @@ public function deletePost($postId)
  {
 	$postManager = new PostManager();
 	$postManager->updatePost($postId, $title, $content);
-	$this->post(postId);
+	$this->post($postId);
 
  }
  public function savePost($postId, $title, $content)
  {
 	$postManager = new PostManager();
 	$postId = $postManager->savePost($title ,$content);
-	$this->post(postId);
+	$this->post($postId);
  }
 
 }

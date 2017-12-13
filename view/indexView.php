@@ -7,7 +7,7 @@
 <h1>Mon super blog !</h1>
 <p>Derniers billets du blog :</p>
 
-            <a class="btn btn-primary " href="view/redaction.php ?>">Ajouter un article</a> <br/></a> 
+            <a class="btn btn-primary " href="index.php?action=newPost">Ajouter un article</a> <br/></a> 
 
 
 <?php
