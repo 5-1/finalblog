@@ -1,4 +1,3 @@
-
 <?php
 require('controler/controler.php');
 $controler = new Controler();
@@ -69,15 +68,15 @@ if (isset($_GET['action']))
 
 elseif(isset($_POST['add']))
 {
-    if(!empty($_POST[('article_title')]) AND !empty($_POST['article_content']))
-    {
+    if(!empty($_POST[('article_titre')]) && !empty($_POST['article_contenu']))
+	{
         if(isset($_POST['id']) AND !empty($_POST['id']))
         {
-            $controler->updatePost($_POST['id'], $_POST['article_title'], $_POST['article_content']);
+            $controler->updatePost($_POST['id'], $_POST['article_titre'], $_POST['article_contenu']);
         }
         else
         {
-            $controler->savePost($_POST['article_title'], $_POST['article_content']);
+            $controler->savePost($_POST['article_titre'], $_POST['article_contenu']);
         }
     }
 
@@ -86,5 +85,3 @@ else
 {
     $controler->listPosts();
 }
-
-
