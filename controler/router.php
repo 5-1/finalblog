@@ -1,6 +1,11 @@
 <?php
 require('controler.php');
-$controler = new Controler();
+class router
+{
+public function root()
+{
+    $controler = new Controler();
+
 
 if (isset($_GET['action'])) 
 {
@@ -84,4 +89,6 @@ elseif(isset($_POST['add']))
 else 
 {
     $controler->listPosts();
+}
+}
 }
