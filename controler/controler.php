@@ -12,29 +12,19 @@ public function listPosts()
     require('view/indexView.php');
 }
 
-
 public function post($postId)
 {
- 	  $title = 'Mon blog'; ?>
-<?php $background_image = 'img/buisiness.jpg'; ?>
-<?php $h1title = 'BLOG'; ?>
-<?php $h2title = 'Post'; ?>
-
-<?php ob_start(); 
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     $post = $postManager->getPost($postId);
-    $comments = $commentManager->getComments($_GET['id']);
+    $comments = $commentManager->getComments($postId);
     require('view/postView.php');
-    $content = ob_get_clean();
-	require('view/template.php');
 }
-
 
 public function addComment($postId, $author, $comment)
 {
     $commentManager = new CommentManager();
-    $affectedLines = $CommentManager->postComment($postId, $author, $comment);
+    $affectedLines = $commentManager->postComment($postId, $author, $comment);
     if ($affectedLines === false) 
     {
         throw new Exception('Impossible d\'ajouter le commentaire !');
@@ -52,14 +42,11 @@ public function editPost($postId)
 	$modeEdition = true;
 	require('view/editpostView.php');	
 }
-
-
 public function newPost()
  {
  	$modeEdition = false;
     require('view/editpostView.php');
  }
-
 
 public function deletePost($postId)
  {
@@ -75,7 +62,7 @@ public function deletePost($postId)
 	$this->post($postId);
 
  }
- public function savePost($postId, $title, $content)
+ public function savePost($title, $content)
  {
 	$postManager = new PostManager();
 	$postId = $postManager->savePost($title ,$content);

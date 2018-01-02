@@ -1,34 +1,76 @@
-<?php $title = 'Mon blog'; ?>
-<?php $background_image = 'img/buisiness.jpg'; ?>
-<?php $h1title = 'BLOG'; ?>
-<?php $h2title = 'Affichage d\'un article'; ?>
-
-<?php ob_start(); ?>
-
 <!DOCTYPE html>
-<!-- For view one post --> 
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <title>Mon blog</title>
-        <link href="../style.css" rel="stylesheet" /> 
-    </head>
-        
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Article</title>
+
+    <!-- Bootstrap core CSS -->
+
+
+    <link href="/blog/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="/blog/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="/blog/css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <a class="navbar-brand" href="/blog/view/homeView.php">BERG Johan</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/view/homeView.php">Accueil</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/view/aboutView.php">à propos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">Blog</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url(img/buisiness.jpg)">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>Article</h1>
+              <h2 class="subheading">Affichage de l'article</h2>
+
+          </div>
+        </div>
+      </div>
+    </header>
     <body>
-        
+
+
 
         <div class="news">
-            <h3>
-              <h1><?= htmlspecialchars($post['title']) ?></h1>
-                <em>Article crée le <?= $post['creation_date_fr'] ?></em>
-            </h3>
-            
-            <p>
-                <?= nl2br(htmlspecialchars($post['content'])) ?>
-            </p>
-        </div>
-
-        <h3>Commentaires</h3>
 
         <?php
         while ($comment = $comments->fetch())
@@ -44,29 +86,114 @@
 
 <form action="/blog/index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post"> </br>
 
-    <div>
 
-        <label for="author">Auteur</label><br />
-
-        <input type="text" id="author" name="author" />
-
-    </div>
-
-    <div>
-
-        <label for="comment">Commentaire</label><br />
-
-        <textarea id="comment" name="comment"></textarea>
-
-    </div>
-
-    <div>
-
-        <input type="submit" />  </br>
-
-        <a class="btn btn-primary float-left" href="/blog/index.php">retour au blog</a> </br>
 		
 <?php
-$content = ob_get_clean();
-require('template.php');
+
 ?>
+
+        <!-- Post Content Column -->
+        <div class="col-lg-8">
+
+          <!-- Title -->
+          <h1><?= htmlspecialchars($post['title']) ?></h1>
+
+          <!-- Author -->
+          <p class="lead">
+            by
+            <a href="#">Start Bootstrap</a>
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+                <em>Article crée le <?= $post['creation_date_fr'] ?></em>
+
+          <hr>
+
+
+
+          <!-- Post Content -->
+
+                          <?= nl2br(htmlspecialchars($post['content'])) ?>
+
+          <hr>
+
+          <!-- Comments Form -->
+          <div class="card my-4">
+            <h5 class="card-header">Laisser un commentaire:</h5>
+            <div class="card-body">
+              <form>
+                <div class="form-group">
+                  <textarea class="form-control" rows="3"></textarea>
+                </div>
+                <input type="submit" />  </br>
+                        <a class="btn btn-primary float-left" href="/blog/index.php">retour au blog</a> </br>
+
+              </form>
+            </div>
+          </div>
+
+          <!-- Single Comment -->
+          <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <div class="media-body">
+              <h5 class="mt-0">Commenter Name</h5>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+            </div>
+          </div>
+         </div>
+
+
+
+
+    </body>
+
+
+     <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; Berg Johan 2017</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="/blog/vendor/jquery/jquery.min.js"></script>
+    <script src="/blog/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="/blog/js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
