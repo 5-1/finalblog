@@ -11,7 +11,7 @@ if (isset($_GET['action']))
 {
     if ($_GET['action'] == 'listPosts') 
     {
-        $controler->listPosts();
+        $controler->listPosts(); 
     }
     elseif ($_GET['action'] == 'post') 
     {
