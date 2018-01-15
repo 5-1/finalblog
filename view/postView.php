@@ -70,7 +70,7 @@
         </div>
       </div>
     </header>
-    <body>
+
 
 
     <!-- Page Content -->
@@ -112,7 +112,7 @@
                       <h1><?= htmlspecialchars($post['title']) ?></h1>
 
             by
-            <a href="#">Johan B.</a>
+    &
           </p>
 
           <hr>
@@ -120,13 +120,7 @@
           <!-- Date/Time -->
                 <em>Article crée le <?= $post['creation_date_fr'] ?></em>
 
-          <hr>
-
-
-          
-          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
-
-          <hr>
+        
           <!-- Post Content -->
 
                           <?= nl2br(htmlspecialchars($post['content'])) ?>
@@ -161,7 +155,6 @@
 
 
 
-    </body>
 
 
 

@@ -15,11 +15,6 @@
 
 
 
-      <input type="hidden" name="MAX_FILE_SIZE" value="2097152"> 
-      <p>Choisissez une photo avec une taille inférieure à 2 Mo.</p> 
-      <input type="file" name="photo" <?php if($modeEdition == 1) { ?> value="<?= 
-      $post['idphoto'] ?>"<?php } ?>/><br/>
-
 
 
       <input type="submit" value="Envoyer l'article" name="add" />

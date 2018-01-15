@@ -91,8 +91,7 @@
 <div class="card mb-4">
 
           <div class="card mb-4">
-            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
-            <div class="card-body">
+
               <h2 class="card-title">				<em><a href="index.php?action=post&id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a></em>
                 <em><br/></h2>
               <p class="card-text"><?= nl2br(htmlspecialchars($post['content'])) ?> </br>
