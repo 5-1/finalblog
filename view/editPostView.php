@@ -12,6 +12,11 @@
       $post['title'] ?>"<?php } ?> /><br />
       <textarea name="article_contenu" placeholder="Contenu de l'article"><?php if($modeEdition == 1) { ?><?= 
       $post['content'] ?><?php } ?></textarea><br />
+
+
+
+
+
       <input type="submit" value="Envoyer l'article" name="add" />
 	</form>
 
