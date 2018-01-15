@@ -8,12 +8,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Article</title>
+
+    <title>Articles</title>
 
     <!-- Bootstrap core CSS -->
 
 
-    <link href="/blog/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
 
     <!-- Custom fonts for this template -->
     <link href="/blog/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -21,7 +23,9 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- Custom styles for this template -->
-    <link href="/blog/css/clean-blog.min.css" rel="stylesheet">
+    <link href="css/blog-home.css" rel="stylesheet">
+        <link href="/blog/css/clean-blog.min.css" rel="stylesheet">
+
 
   </head>
 
@@ -69,6 +73,14 @@
     <body>
 
 
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Post Content Column -->
+        <div class="col-lg-50>
+
 
         <div class="news">
 
@@ -93,15 +105,14 @@
 ?>
 
         <!-- Post Content Column -->
-        <div class="col-lg-8">
+        <div class="col-lg-50> Johan B 
 
-          <!-- Title -->
-          <h1><?= htmlspecialchars($post['title']) ?></h1>
 
-          <!-- Author -->
           <p class="lead">
+                      <h1><?= htmlspecialchars($post['title']) ?></h1>
+
             by
-            <a href="#">Start Bootstrap</a>
+            <a href="#">Johan B.</a>
           </p>
 
           <hr>
@@ -112,7 +123,10 @@
           <hr>
 
 
+          
+          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
 
+          <hr>
           <!-- Post Content -->
 
                           <?= nl2br(htmlspecialchars($post['content'])) ?>
@@ -138,7 +152,7 @@
           <div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
-              <h5 class="mt-0">Commenter Name</h5>
+              <h5 class="mt-0">John</h5>
               Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
             </div>
           </div>
@@ -148,6 +162,7 @@
 
 
     </body>
+
 
 
      <!-- Footer -->

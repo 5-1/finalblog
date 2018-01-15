@@ -78,21 +78,20 @@
       <div class="row">
 
         <!-- Blog Entries Column -->
-        <div class="col-md-8">
+        <div class="col-md-15">
 <h1>Mon super blog !</h1>
 <p>Derniers billets du blog :</p>
 	<a class="btn btn-primary " href="index.php?action=new">Ajouter un article</a> <br/>
-
-
 
 	<?php
 	while ($post = $posts->fetch())
 	{
 	?>
 
-
-
 <div class="card mb-4">
+
+          <div class="card mb-4">
+            <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">
             <div class="card-body">
               <h2 class="card-title">				<em><a href="index.php?action=post&id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a></em>
                 <em><br/></h2>
@@ -195,8 +194,8 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="/blog/vendor/jquery/jquery.min.js"></script>
-    <script src="/blog/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="/blog/js/clean-blog.min.js"></script>
