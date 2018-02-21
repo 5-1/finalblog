@@ -6,13 +6,12 @@ class Manager
 	public $db;
 	protected function dbConnect()
 	{
-		
-		$file_to_parse = "config.ini";
-		$array = parse_ini_file($file_to_parse);
-		$host = $array['hostname'];
-		$dbname = $array['dbname'];
-		$username = $array['username'];
-		$password = $array['password'];
+		include ('config.php');
+		$array = 'config.php';
+		$host = $config['hostname'];
+		$dbname = $config['dbname'];
+		$username = $config['username'];
+		$password = $config['password'];
 			
 		
 		$db = new \PDO ('mysql:host='.$host.';dbname='.$dbname.';charset=utf8', $username, $password);

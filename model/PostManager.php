@@ -23,6 +23,7 @@ class PostManager extends Manager
     {
         $db = $this->dbConnect();
         $ins = $db->prepare("INSERT INTO articles (title, content, creation_date, date_time_edition) VALUES (?, ?, NOW(), NOW())");
+        $contenu = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $contenu);
         $ins->execute(array($titre, $contenu));
         return $db->lastInsertId();
     }
@@ -31,6 +32,7 @@ class PostManager extends Manager
     {
 		$db = $this->dbConnect();
         $update = $db->prepare('UPDATE articles SET title = ?, content = ?, date_time_edition = NOW() WHERE id = ?');
+        $contenu = preg_replace('#<script(.*?)>(.*?)</script>#is', '', $contenu);
         $update->execute(array($titre, $contenu, $postId));
     }
 	

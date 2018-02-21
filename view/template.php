@@ -38,13 +38,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/blog/view/homeView.php">Accueil</a>
+              <a class="nav-link" href="/safe/view/homeView.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blog/view/aboutView.php">à propos</a>
+              <a class="nav-link" href="/safe/view/aboutView.php">à propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">Blog</a>
+              <a class="nav-link" href="/safe/">Blog</a>
             </li>
           </ul>
         </div>

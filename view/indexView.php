@@ -42,13 +42,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/blog/view/homeView.php">Accueil</a>
+              <a class="nav-link" href="/safe/view/homeView.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blog/view/aboutView.php">à propos</a>
+              <a class="nav-link" href="/safe/view/aboutView.php">à propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">Blog</a>
+              <a class="nav-link" href="/safe/">Blog</a>
             </li>
           </ul>
         </div>
@@ -92,16 +92,16 @@
 
           <div class="card mb-4">
 
-              <h2 class="card-title">				<em><a href="index.php?action=post&id=<?= $post['id'] ?>"><?= htmlspecialchars($post['title']) ?></a></em>
+              <h2 class="card-title">				<em><a href="index.php?action=post&id=<?= htmlspecialchars($post['id']) ?>"><?= htmlspecialchars($post['title']) ?></a></em>
                 <em><br/></h2>
               <p class="card-text"><?= nl2br(htmlspecialchars($post['content'])) ?> </br>
 
-				<a class="btn btn-primary " href="index.php?action=edit&id=<?= $post['id'] ?>">Modifier &rarr;</a> 
-				<a class="btn btn-primary " href="index.php?action=supprimer&id=<?= $post['id'] ?>">Supprimer &rarr;</a>  
+				<a class="btn btn-primary " href="index.php?action=edit&id=<?= htmlspecialchars($post['id']) ?>">Modifier &rarr;</a>
+				<a class="btn btn-primary " href="index.php?action=supprimer&id=<?= htmlspecialchars($post['id']) ?>">Supprimer &rarr;</a>
 
             </div>
             <div class="card-footer text-muted">
-              <em>le <?= $post['creation_date_fr'] ?></em>
+              <em>le <?= htmlspecialchars($post['creation_date_fr']) ?></em>
             </div>
           </div>
 
@@ -131,12 +131,7 @@
         </div>
 
 
-          <!-- Search Widget -->
-          <div class="card my-4">
-            <h5 class="card-header"></h5>
-            <div class="card-body">
-              <div class="input-group">
-  <a class="btn btn-primary " href="index.php?action=new">Ajouter un article</a> <br/>
+    
 
                 </span>
             </div>

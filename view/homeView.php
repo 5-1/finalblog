@@ -1,5 +1,5 @@
 <?php $title = 'Berg J Dev freelance'; ?>
-<?php $background_image = '/test2/img/home-bg.jpg'; ?>
+<?php $background_image = '/safe/img/home-bg.jpg'; ?>
 <?php $h1title = '<h1>Développeur Web Freelance</h1>'; ?>
 <?php $h2title = 'Développeur / Intégrateur WEB indépendant
 Création de sites Internet sur mesure'; ?>

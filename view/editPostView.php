@@ -7,10 +7,10 @@
 
 	<form method="POST" action="index.php">
 	  <input type="hidden" name="id" <?php if($modeEdition == 1) { ?> value="<?= 
-      $post['id'] ?>"<?php } ?>/><br/>
+      htmlspecialchars($post['id']) ?>"<?php } ?>/><br/>
       <input type="text" name="article_titre" placeholder="Titre"<?php if($modeEdition == 1) { ?> value="<?= 
-      $post['title'] ?>"<?php } ?> /><br />
-      <textarea name="article_contenu" placeholder="Contenu de l'article"><?php if($modeEdition == 1) { ?><?= 
+      htmlspecialchars($post['title']) ?>"<?php } ?> /><br />
+      <textarea name="article_contenu" placeholder="Contenu de l'article"><?php if($modeEdition == 1) { ?><?=
       $post['content'] ?><?php } ?></textarea><br />
 
 

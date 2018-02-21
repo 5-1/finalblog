@@ -42,13 +42,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/blog/view/homeView.php">Accueil</a>
+              <a class="nav-link" href="/safe/view/homeView.php">Accueil</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blog/view/aboutView.php">à propos</a>
+              <a class="nav-link" href="/safe/view/aboutView.php">à propos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/blog/">Blog</a>
+              <a class="nav-link" href="/safe/">Blog</a>
             </li>
           </ul>
         </div>
@@ -96,7 +96,8 @@
 
 
 
-<form action="/blog/index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post"> </br>
+
+<form action="/safe/controler/router.php?action=addComment&amp;id=<?= htmlspecialchars($post['id']) ?>" method="post"> </br>
 
 
 		
@@ -111,21 +112,20 @@
           <p class="lead">
                       <h1><?= htmlspecialchars($post['title']) ?></h1>
 
-            by
-    &
+            by Johan B.
+    
           </p>
 
           <hr>
 
           <!-- Date/Time -->
-                <em>Article crée le <?= $post['creation_date_fr'] ?></em>
+                <em>Article crée le <?= $post['creation_date_fr'] ?></em> </br>
 
         
           <!-- Post Content -->
 
                           <?= nl2br(htmlspecialchars($post['content'])) ?>
 
-          <hr>
 
           <!-- Comments Form -->
           <div class="card my-4">
@@ -133,24 +133,52 @@
             <div class="card-body">
               <form>
                 <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
-                </div>
+
+
+
+
+                <form action="/safe/controler/router.php?action=addComment&amp;id=<?= htmlspecialchars($post['id'])  ?>" method="post"> </br>
+
+    <div>
+
+        <label for="author">Auteur</label><br />
+
+        <input type="text" id="author" name="author" />
+
+    </div>
+
+
+    <div>
+
+        <label for="comment">Commentaire</label><br />
+
+        <textarea class="form-control" rows="3" id="comment" name="comment"></textarea>
+
+    </div>
+
+
+
+
                 <input type="submit" />  </br>
-                        <a class="btn btn-primary float-left" href="/blog/index.php">retour au blog</a> </br>
+
+                        <a class="btn btn-primary float-left" href="/safe/index.php">retour au blog</a> </br>
 
               </form>
             </div>
           </div>
 
-          <!-- Single Comment -->
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-            <div class="media-body">
-              <h5 class="mt-0">John</h5>
-              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-            </div>
-          </div>
-         </div>
+        <div class="news">
+          
+
+        <?php
+        while ($comment = $comments->fetch())
+        {
+        ?>
+            <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+            <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <?php
+        }
+        ?>
 
 
 
