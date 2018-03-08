@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require('controler.php');
 class router
 {
@@ -77,11 +79,11 @@ elseif(isset($_POST['add']))
 	{
         if(isset($_POST['id']) && !empty($_POST['id']))
         {
-            $controler->updatePost($_POST['id'], $_POST['article_titre'], $_POST['article_contenu']);
+            $controler->updatePost($_POST['id'], $_POST['article_titre'], $_POST['article_contenu'],$_POST['token']);
         }
         else
         {
-            $controler->savePost($_POST['article_titre'], $_POST['article_contenu']);
+            $controler->savePost($_POST['article_titre'], $_POST['article_contenu'], $_POST['token']);
         }
     }
 

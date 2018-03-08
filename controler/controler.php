@@ -56,6 +56,7 @@ class controler
 
         $postManager = new PostManager();
         $post = $postManager->getPost($postId);
+        $token = $this->generateCSRFToken();
         $modeEdition = true;
         require('view/editpostView.php');
     }
@@ -66,6 +67,7 @@ class controler
     public function newPost()
     {
         $modeEdition = false;
+        $token = $this->generateCSRFToken();
         require('view/editpostView.php');
     }
 
@@ -84,23 +86,57 @@ class controler
      * @param $title
      * @param $content
      */
-    public function updatePost($postId, $title, $content)
+    public function updatePost($postId, $title, $content, $token)
     {
-        $postManager = new PostManager();
-        $postManager->updatePost($postId, $title, $content);
-        $this->post($postId);
+        if ($this->checkCSRF($token)) {
+            $postManager = new PostManager();
+            $postManager->updatePost($postId, $title, $content);
+            $this->post($postId);
 
+        } else {
+            $this->editPost($postId);
+        }
     }
 
     /**
      * @param $title
      * @param $content
      */
-    public function savePost($title, $content)
+    public function savePost($title, $content, $token)
     {
         $postManager = new PostManager();
-        $postId = $postManager->savePost($title, $content);
-        $this->post($postId);
+
+        if ($this->checkCSRF($token)) {
+            $postId = $postManager->savePost($title, $content);
+            $this->post($postId);
+        } else {
+            $this->newPost();
+        }
+    }
+
+
+    /**
+     * @return string
+     * @throws Exception
+     */
+    private function generateCSRFToken()
+    {
+
+        if (isset($_SESSION['token']) AND !empty($_SESSION['token'])) {
+            $token = $_SESSION['token'];
+        } else {
+            $token = base64_encode(random_bytes(10));
+            $_SESSION['token'] = $token;
+        }
+
+
+        return $token;
+    }
+
+    private function checkCSRF($token)
+    {
+        return $token == $this->generateCSRFToken();
+
     }
 
 }
